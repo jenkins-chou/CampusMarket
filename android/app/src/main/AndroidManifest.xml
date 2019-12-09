@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jenking.spandroid">
+
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <application
+        android:name=".app.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/application"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/application"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.common.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.student.MineMatchActivity" />
+        <activity android:name=".activity.student.MineCertActivity" />
+        <activity android:name=".activity.student.MineActivityActivity" />
+        <activity android:name=".activity.student.MineReportActivity" />
+        <activity android:name=".activity.student.MineMoralActivity" />
+        <activity android:name=".activity.student.MineCourseActivity" />
+        <activity
+            android:name=".activity.teacher.TeachScoreOperateActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.manager.ManagerActiActivity" />
+        <activity android:name=".activity.manager.ManagerCertActivity" />
+        <activity android:name=".activity.manager.ManagerCourseActivity" />
+        <activity android:name=".activity.manager.ManagerMatchActivity" />
+        <activity android:name=".activity.manager.ManagerMoralActivity" />
+        <activity android:name=".activity.manager.ManagerReportActivity" />
+        <activity android:name=".activity.manager.ManagerSchoolActivity" />
+        <activity android:name=".activity.manager.ManagerClassActivity" />
+        <activity android:name=".activity.manager.ManagerTeacherActivity" />
+        <activity android:name=".activity.student.MineCourseObligatoryActivity" />
+        <activity android:name=".activity.student.MineCourseElectiveActivity" />
+        <activity android:name=".activity.manager.ManagerCourseSelectedActivity" />
+        <activity android:name=".activity.manager.ManagerScoreActivity" />
+        <activity android:name=".activity.common.LoginActivity" />
+        <activity android:name=".activity.common.RegisterActivity" />
+        <activity android:name=".activity.manager.ManagerCollegeActivity" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeActivity" />
+        <activity android:name=".activity.teacher.TeacherCourseArrangeActivity" />
+        <activity android:name=".activity.common.UserInfoActivity" />
+        <activity android:name=".activity.manager.ManagerSchoolOperateActivity" />
+        <activity android:name=".activity.common.SettingActivity" />
+        <activity android:name=".activity.common.UserInfoModifyActivity" />
+        <activity android:name=".activity.common.UserInfoAvatarActivity" />
+        <activity android:name=".activity.manager.ManagerTermActivity" />
+        <activity android:name=".activity.manager.TermOperateActivity" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypeClass" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypePerson" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypeClassAdd" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonList" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonAdd" />
+        <activity android:name=".activity.student.StudentSelectCourseActivity" />
+        <activity android:name=".activity.manager.ManagerReportListActivity" />
+        <activity android:name=".activity.manager.ManagerScoreListActivity" />
+        <activity android:name=".activity.common.TestActivity">
+
+        </activity>
+    </application>
+
+</manifest>

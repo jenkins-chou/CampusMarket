@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<link rel="stylesheet" type="text/css" href="${ctx}/manager/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/manager/css/main.css" />
+</head>
+<body>
+	<div class="topbar-wrap white">
+		<div class="topbar-inner clearfix">
+			<div class="topbar-logo-wrap clearfix">
+				<h1 class="topbar-logo none">
+					<a href="index.html" class="navbar-brand">后台管理</a>
+				</h1>
+			</div>
+			<div class="top-info-wrap">
+				<ul class="top-info-list clearfix">
+					<li>管理员</li>
+					<li><a href="${ctx}/exit">退出</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container clearfix">
+		<div class="sidebar-wrap">
+			<div class="sidebar-title">
+				<h1>菜单</h1>
+			</div>
+			<div class="sidebar-content">
+				<ul class="sidebar-list">
+				
+					<li><a href="#"><i class="icon-font">&#xe003;</i>公共管理</a>
+						<ul class="sub-menu">
+							<li><a href="${ctx}/message/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>消息管理</a></li>
+							<li><a href="${ctx}/coupon_base/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>优惠券发布管理</a></li>
+							<li><a href="${ctx}/parking_lot/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>停车场管理</a></li>
+							<li><a target="m"><i class="icon-font">&#xe008;</i>消费统计</a></li>
+						</ul>
+					</li>
+					
+					<li><a href="#"><i class="icon-font">&#xe003;</i>用户管理</a>
+						<ul class="sub-menu">
+							<li><a href="${ctx}/user/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>用户管理</a></li>
+							<li><a href="${ctx}/account/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>账户管理</a></li>
+							<li><a href="${ctx}/account_recharge/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>充值管理</a></li>
+							<li><a href="${ctx}/car/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>车辆管理</a></li>
+							<li><a href="${ctx}/consume_record/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>消费记录管理</a></li>
+							<li><a href="${ctx}/coupon_user/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>用户优惠券管理</a></li>
+							<li><a href="${ctx}/driver/showHtmlList" target="m"><i class="icon-font">&#xe008;</i>驾驶证管理</a></li>
+							<!-- <li><a href="${ctx}/map/showIndex" target="m"><i class="icon-font">&#xe008;</i>地图测试</a></li> -->
+						</ul>
+					</li>	
+				</ul>
+			</div>
+		</div>
+		<!--/sidebar-->
+		<div class="main-wrap">
+			<iframe name="m" id="m" width="100%" height="900px" scrolling="auto" frameborder="0"></iframe>
+		</div>
+		<!--/main-->
+	</div>
+</body>
+</html>

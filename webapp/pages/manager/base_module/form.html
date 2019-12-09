@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | General Form Elements</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <link rel="stylesheet" href="/dist/toastr/toastr.css">
+
+    <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="col-md-3"></div>
+  <div class="col-md-6" style="margin-top: 10px">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+
+              <h3 class="box-title"><span class="label label-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加/修改</font></font></span></h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+              <div id="form-body" class="box-body">
+
+              </div>
+
+              <!-- /.box-body -->
+            </form>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary col-md-2 margin" onclick="submit()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提交</font></font></button>
+                <button type="submit" class="btn btn-danger margin" onclick="goBack()" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
+              </div>
+          </div>
+          <!-- /.box -->
+          </div>
+          <!-- /.box -->
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+
+<!-- bootstrap datepicker -->
+<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script type="text/javascript" src="/pages/base/base.js"></script>
+<script type="text/javascript" src="/dist/toastr/toastr.js"></script>
+
+<script type="text/javascript">
+
+  //业务URI ------------------------------------||
+
+  var ROOT_URI = URI_BASE_MODULE;
+
+
+  //初始化y一些自定义的表单选项
+  var init = function(){
+    $('#school_regis_time').datepicker({
+      autoclose: true
+    })
+  }
+
+  /**
+    以下部分不用修改
+  **/
+  var getUrl = server_url+ROOT_URI+URI_BASE_GET;
+  var addUrl = server_url+ROOT_URI+URI_BASE_ADD;
+  var updateUrl = server_url+ROOT_URI+URI_BASE_UPDATE;
+  var getTableInfoUri = server_url + ROOT_URI + URI_BASE_GET_TABLEINFO;
+
+
+
+
+  /**
+    以下函数不用改-------------
+  **/
+  $(function(){
+    getTableInfo();
+
+  });
+
+  var tableInfo;
+  var getTableInfo = function(){
+    $.ajax({
+      type: "post",
+      dataType: "json",
+      url: getTableInfoUri,
+      data: {},
+      success: function (data) {       //data回调信息
+      if (data != "" && data.code == 200) {
+        // console.log("getTableInfo");
+        console.log(data);
+        tableInfo = data;
+        resetHtml(tableInfo);
+
+        init();
+
+        //若id存在表示修改，需要先获取信息
+        var id = getQueryVariable("id");
+        if (id !=false) {
+          getModifyInfo(id);
+        }
+      }else{
+
+      }
+      },
+      complete:function(){
+        //console.log('complete');
+      }
+    });
+  }
+  var resetHtml = function(data){
+    $("#form-body").empty();
+    if (data == null ||
+      data.column_comment == null ||
+      data.column_comment.length <=0 ||
+      data.column_name == null ||
+      data.column_name.length <=0) {
+      return;
+    }
+
+    for (var i = 0; i < data.column_name.length; i++) {
+      //column_name[i]
+      if (data.column_filter[i] == 'normal') {
+        var html = "<div class='form-group'>" +
+                  "<label for='exampleInputEmail1'>" +
+                    "<font style='vertical-align: inherit;'>" +
+                      "<font style='vertical-align: inherit;'>" +
+                      data.column_comment[i] +
+                    "</font>"+
+                  "</font>"+
+                "</label>"+
+                "<input id='"+data.column_name[i]+"' type='email' class='form-control' id='exampleInputEmail1' placeholder='请输入'>"+
+                "</div>";
+        $("#form-body").append(html);
+      }
+
+    }
+  }
+
+  var getModifyInfo = function(id){
+    $.ajax({
+      type: "post",
+      dataType: "json",
+      url: getUrl,
+      data: {id:id},
+      success: function (data) {       //data回调信息
+        console.log(data);
+      if (data != "" && data.code == 200) {
+        //stopLoading();
+        //toastr.success("操作成功","温馨提示");
+        showInfo(data.data);
+      }else{
+        //toastr.error("操作失败","温馨提示");
+      }
+      },
+      complete:function(){
+        //console.log('complete');
+        //stopLoading();
+      }
+    });
+  }
+
+  var showInfo = function(data){
+    if (tableInfo == null) {return;}
+    console.log(data);
+    for (var i = 0; i < tableInfo.column_name.length; i++) {
+      console.log(tableInfo.column_filter[i]);
+      console.log(tableInfo.column_name[i]);
+      console.log(data[tableInfo.column_name[i]]);
+      if (tableInfo.column_filter[i] == 'normal') {
+        $('#'+tableInfo.column_name[i]).val(data[tableInfo.column_name[i]]);
+      }
+
+      console.log("------------");
+    }
+  }
+
+  var add = function(){
+    $.ajax({
+      type: "post",
+      dataType: "json",
+      url: addUrl,
+      data: getInput(),
+      success: function (data) {       //data回调信息
+      if (data != "" && data.code == 200) {
+        //stopLoading();
+        toastr.success("操作成功","温馨提示");
+        goBack();
+      }else{
+        toastr.error("操作失败","温馨提示");
+      }
+      },
+      complete:function(){
+        //console.log('complete');
+        //stopLoading();
+      }
+    });
+  }
+
+  var update = function(){
+    var id = getQueryVariable("id");
+    var params = getInput();
+    params.id = id;
+    $.ajax({
+      type: "post",
+      dataType: "json",
+      url: updateUrl,
+      data:params ,
+      success: function (data) {       //data回调信息
+      if (data != "" && data.code == 200) {
+        //stopLoading();
+        toastr.success("操作成功","温馨提示");
+        goBack();
+      }else{
+        toastr.error("操作失败","温馨提示");
+      }
+      },
+      complete:function(){
+        //console.log('complete');
+        //stopLoading();
+      }
+    });
+  }
+
+  var getInput = function(){
+    var input = {};
+    if (tableInfo == null) {
+      return {};
+    }
+    for (var i = 0; i < tableInfo.column_name.length; i++) {
+      input[tableInfo.column_name[i]] = $('#'+tableInfo.column_name[i]).val();
+    }
+    return input;
+  }
+
+  var submit = function(){
+    if (getQueryVariable("id")) {
+        update();
+    }else{
+      add();
+    }
+  }
+
+  var goBack = function(){
+    javascript:history.back(-1)
+  }
+</script>
+</body>
+</html>
