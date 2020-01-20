@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
 import com.demo.models.BaseCollectionModel;
+import com.demo.models.BaseCommodityModel;
 import com.demo.utils.Const;
 import com.demo.utils.CrossOrigin;
 import com.jfinal.core.Controller;
@@ -31,6 +32,24 @@ public class BaseCollectionController  extends Controller {
 		hidden,//�����ֶ�
 		custom,//�Զ���
 		normal//Ĭ��
+	}
+	
+	
+	@CrossOrigin
+	public void getAllCollectByProvider(){
+		String provider = getPara("user_id");
+		List<BaseCollectionModel> models = BaseCollectionModel.dao.find("select b.* from "+DB_TABLE+" a,base_commodity b where a.user_id = "+provider+" and a.commodity_id = b.id and a.del != 'delete' and b.del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(models!=null&&models.size()>=1){
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+			js.put("list", models);
+			System.out.println(JsonKit.toJson(js));
+			renderJson(JsonKit.toJson(js));
+		}else{
+			System.out.println("model:");
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			renderJson(js.toJSONString());
+		}
 	}
 	
 	@CrossOrigin

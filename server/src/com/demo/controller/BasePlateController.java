@@ -34,6 +34,22 @@ public class BasePlateController  extends Controller {
 	}
 	
 	@CrossOrigin
+	public void getAllMobile(){
+		List<BasePlateModel> models = BasePlateModel.dao.find("select * from "+DB_TABLE+" where del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(models!=null&&models.size()>=1){
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+			js.put("list", models);
+			System.out.println(JsonKit.toJson(js));
+			renderJson(JsonKit.toJson(js));
+		}else{
+			System.out.println("model:");
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	@CrossOrigin
 	public void getAll(){
 		List<BasePlateModel> models = BasePlateModel.dao.find("select * from "+DB_TABLE+" where del != 'delete'");
 		JSONObject js = new JSONObject();

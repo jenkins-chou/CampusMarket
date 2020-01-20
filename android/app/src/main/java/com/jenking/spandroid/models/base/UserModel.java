@@ -2,8 +2,8 @@ package com.jenking.spandroid.models.base;
 
 public class UserModel {
     public String id;
-    public String name;
-    public String pass;
+    public String username;
+    public String password;
     public String realname;
     public String avatar;
     public String slogan;
@@ -37,20 +37,20 @@ public class UserModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRealname() {
@@ -249,8 +249,8 @@ public class UserModel {
     public String toString() {
         return "UserModel{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", pass='" + pass + '\'' +
+                ", name='" + username + '\'' +
+                ", pass='" + password + '\'' +
                 ", realname='" + realname + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", slogan='" + slogan + '\'' +

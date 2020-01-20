@@ -189,7 +189,7 @@ public class UserInfoAvatarActivity extends BaseActivity {
          *
          * 示例: 查看 org.xutils.sample.http 包里的代码
          */
-        RequestParams params = new RequestParams("http://104.194.85.83:7777/upload/uploadImg");
+        RequestParams params = new RequestParams(BaseAPI.base_upload_url);
         //        params.setSslSocketFactory(...); // 设置ssl
         //        params.addQueryStringParameter("wd", "xUtils");
         params.setMultipart(true);

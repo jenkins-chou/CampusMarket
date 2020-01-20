@@ -43,7 +43,7 @@ public class UserPresenter {
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 //记得更改请求接口数据
-                .template(params)
+                .login(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
                 .subscribe(new Observer<ResultModel>() {

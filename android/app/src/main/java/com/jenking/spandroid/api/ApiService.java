@@ -1,7 +1,10 @@
 package com.jenking.spandroid.api;
 
+import com.jenking.spandroid.models.base.CommodityModel;
+import com.jenking.spandroid.models.base.PlateModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.UserModel;
+import com.jenking.spandroid.models.base.WishListModel;
 
 import java.util.Map;
 
@@ -24,15 +27,83 @@ public interface ApiService {
 
 
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("base_user/login")
     Observable<ResultModel<UserModel>> login(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
-    @POST("user/addUser")
+    @POST("base_user/register")
     Observable<ResultModel<UserModel>> addUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
-    @POST("user/updateUser")
+    @POST("base_user/update")
     Observable<ResultModel<UserModel>> updateUser(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_plate/getAllMobile")
+    Observable<ResultModel<PlateModel>> getAllPlate(@FieldMap Map<String, String> body);
+
+
+
+
+    @FormUrlEncoded
+    @POST("base_commodity/add")
+    Observable<ResultModel<CommodityModel>> addCommodity(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_commodity/delete")
+    Observable<ResultModel<CommodityModel>> deleteCommodity(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_commodity/update")
+    Observable<ResultModel<CommodityModel>> updateCommodity(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_commodity/searchAllMobile")
+    Observable<ResultModel<CommodityModel>> searchAllMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_commodity/getAllMobile")
+    Observable<ResultModel<CommodityModel>> getAllCommodity(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_commodity/getAllByPlateMobile")
+    Observable<ResultModel<CommodityModel>> getAllByPlateMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_commodity/getAllByProviderMobile")
+    Observable<ResultModel<CommodityModel>> getAllCommodityByProvider(@FieldMap Map<String, String> body);
+
+
+
+
+    @FormUrlEncoded
+    @POST("base_collection/add")
+    Observable<ResultModel<CommodityModel>> collectCommodity(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_collection/getAllCollectByProvider")
+    Observable<ResultModel<CommodityModel>> getAllCollectByProvider(@FieldMap Map<String, String> body);
+
+
+    @FormUrlEncoded
+    @POST("base_wishlist/add")
+    Observable<ResultModel<WishListModel>> addWishList(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_wishlist/update")
+    Observable<ResultModel<WishListModel>> updateWishList(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_wishlist/delete")
+    Observable<ResultModel<WishListModel>> deleteWishList(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_wishlist/getAllMobile")
+    Observable<ResultModel<WishListModel>> getAllMobile(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_wishlist/getAllByProviderMobile")
+    Observable<ResultModel<WishListModel>> getAllByProviderMobile(@FieldMap Map<String, String> body);
+
 
 }

@@ -21,6 +21,7 @@ import com.demo.controller.BasePlateController;
 import com.demo.controller.BaseTypeController;
 import com.demo.controller.BaseUserController;
 import com.demo.controller.BaseUserTypeController;
+import com.demo.controller.BaseWishlistController;
 import com.demo.controller.IndexController;
 import com.demo.controller.TransactionRecordController;
 import com.demo.controller.UploadController;
@@ -35,6 +36,7 @@ import com.demo.models.BasePlateModel;
 import com.demo.models.BaseTypeModel;
 import com.demo.models.BaseUserModel;
 import com.demo.models.BaseUserTypeModel;
+import com.demo.models.BaseWishlistModel;
 import com.demo.models.TransactionRecordModel;
 import com.demo.utils.CrossInterceptor;
 import com.demo.utils.DatabaseUtil;
@@ -105,6 +107,7 @@ public class SystemConfig extends JFinalConfig {
 		me.add("base_user",BaseUserController.class);
 		me.add("base_user_type",BaseUserTypeController.class);
 		me.add("transaction_record",TransactionRecordController.class);
+		me.add("base_wishlist",BaseWishlistController.class);
 	
 	}
 	 
@@ -131,6 +134,7 @@ public class SystemConfig extends JFinalConfig {
 		arp.addMapping("base_user", BaseUserModel.class);
 		arp.addMapping("base_user_type", BaseUserTypeModel.class);
 		arp.addMapping("transaction_record", TransactionRecordModel.class);
+		arp.addMapping("base_wishlist", BaseWishlistModel.class);
 
 
 	}

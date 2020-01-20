@@ -52,8 +52,8 @@ public class MainActivity extends BaseActivity {
                 .setInActiveColor(R.color.base_normal_navcolor)
                 .setMode(BottomNavigationBar.MODE_FIXED)
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
-                .addItem(new BottomNavigationItem(R.mipmap.main_nav_all, "商品").setActiveColorResource(R.color.main_color))
-                .addItem(new BottomNavigationItem(R.mipmap.main_nav_course, "分类").setActiveColorResource(R.color.main_color))
+                .addItem(new BottomNavigationItem(R.mipmap.main_nav_all, "闲置品").setActiveColorResource(R.color.main_color))
+                .addItem(new BottomNavigationItem(R.mipmap.main_nav_course, "求购").setActiveColorResource(R.color.main_color))
                 .addItem(new BottomNavigationItem(R.mipmap.main_nav_mine, "我的").setActiveColorResource(R.color.main_color))
                 .setFirstSelectedPosition(0)
                 .initialise();

@@ -34,6 +34,73 @@ public class BaseCommodityController  extends Controller {
 	}
 	
 	@CrossOrigin
+	public void searchAllMobile(){
+		String keyword = getPara("keyword");
+		List<BaseCommodityModel> models = BaseCommodityModel.dao.find("select * from "+DB_TABLE+" where commodity_name like '%"+keyword+"%' and del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(models!=null&&models.size()>=1){
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+			js.put("list", models);
+			System.out.println(JsonKit.toJson(js));
+			renderJson(JsonKit.toJson(js));
+		}else{
+			System.out.println("model:");
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	@CrossOrigin
+	public void getAllMobile(){
+		List<BaseCommodityModel> models = BaseCommodityModel.dao.find("select * from "+DB_TABLE+" where del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(models!=null&&models.size()>=1){
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+			js.put("list", models);
+			System.out.println(JsonKit.toJson(js));
+			renderJson(JsonKit.toJson(js));
+		}else{
+			System.out.println("model:");
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	@CrossOrigin
+	public void getAllByPlateMobile(){
+		String plate_id = getPara("plate_id");
+		List<BaseCommodityModel> models = BaseCommodityModel.dao.find("select * from "+DB_TABLE+" where plate_id = "+plate_id+" and del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(models!=null&&models.size()>=1){
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+			js.put("list", models);
+			System.out.println(JsonKit.toJson(js));
+			renderJson(JsonKit.toJson(js));
+		}else{
+			System.out.println("model:");
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	@CrossOrigin
+	public void getAllByProviderMobile(){
+		String provider = getPara("user_id");
+		List<BaseCommodityModel> models = BaseCommodityModel.dao.find("select * from "+DB_TABLE+" where commodity_provider = "+provider+" and del != 'delete'");
+		JSONObject js = new JSONObject();
+		if(models!=null&&models.size()>=1){
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+			js.put("list", models);
+			System.out.println(JsonKit.toJson(js));
+			renderJson(JsonKit.toJson(js));
+		}else{
+			System.out.println("model:");
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			renderJson(js.toJSONString());
+		}
+	}
+	
+	@CrossOrigin
 	public void getAll(){
 		List<BaseCommodityModel> models = BaseCommodityModel.dao.find("select * from "+DB_TABLE+" where del != 'delete'");
 		JSONObject js = new JSONObject();
@@ -123,6 +190,7 @@ public class BaseCommodityController  extends Controller {
 			List commentList = DatabaseUtil.getTableInfo(DB_TABLE,DatabaseUtil.TableInfoEnum._ColumnComments);
 			List filterList = new ArrayList();
 			for(int i=0;i<nameList.size();i++){
+				System.out.println("private String "+nameList.get(i)+";\n");
 				String filterTypeName = tableFilter.get(nameList.get(i));
 				if(filterTypeName == null || filterTypeName == ""){
 					filterList.add(FilterType.normal);

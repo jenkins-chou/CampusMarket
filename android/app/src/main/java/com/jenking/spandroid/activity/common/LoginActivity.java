@@ -57,8 +57,8 @@ public class LoginActivity extends BaseActivity {
             return;
         }else{
             Map<String,String> params = RS.getBaseParams(this);
-            params.put("name",name_str);
-            params.put("pass",pass_str);
+            params.put("username",name_str);
+            params.put("password",pass_str);
             userPresenter.login(params);
             setLoadingEnable(true);
         }
@@ -90,10 +90,9 @@ public class LoginActivity extends BaseActivity {
                 if (isSuccess){
                     if (object!=null){
                         ResultModel resultModel = (ResultModel)object;
-                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
-                            if (resultModel.getData()!=null&&resultModel.getData().size()>0){
-                                List<UserModel> userModels = resultModel.getData();
-                                UserModel userModel = userModels.get(0);
+                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
+                            if (resultModel.getData()!=null&&!resultModel.getData().equals("")){
+                                UserModel userModel = (UserModel)resultModel.getData();
                                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                 AccountTool.saveUser(LoginActivity.this,userModel);
                                 finish();

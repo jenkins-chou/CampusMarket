@@ -148,8 +148,8 @@ public class UserInfoModifyActivity extends BaseActivity {
                 select_class_id = userModel.getClass_id();
                 select_class_name = userModel.getClass_name();
 
-                name.setText(userModel.getName());
-                pass.setText(userModel.getPass());
+                name.setText(userModel.getUsername());
+                pass.setText(userModel.getPassword());
                 realname.setText(userModel.getRealname());
                 slogan.setText(userModel.getSlogan());
                 sex.setText(userModel.getSex());
@@ -218,8 +218,8 @@ public class UserInfoModifyActivity extends BaseActivity {
     private void resaveUser(){
         if (userModel!=null){
 
-            userModel.setName(name.getText().toString());
-            userModel.setPass(pass.getText().toString());
+            userModel.setUsername(name.getText().toString());
+            userModel.setPassword(pass.getText().toString());
             userModel.setRealname(realname.getText().toString());
             userModel.setSlogan(slogan.getText().toString());
             userModel.setSex(sex.getText().toString());

@@ -48,8 +48,8 @@ public class RegisterActivity extends BaseActivity {
             return;
         }else{
             Map<String,String> params = RS.getBaseParams(this);
-            params.put("name",username_str);
-            params.put("pass",password_str);
+            params.put("username",username_str);
+            params.put("password",password_str);
             params.put("type","1");
             userPresenter.addUser(params);
             setLoadingEnable(true);
@@ -94,15 +94,13 @@ public class RegisterActivity extends BaseActivity {
                 if (isSuccess){
                     if (object!=null){
                         ResultModel resultModel = (ResultModel)object;
-                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
-                            if (resultModel.getData()!=null&&resultModel.getData().size()>0){
-                                List<UserModel> userModels = resultModel.getData();
-                                UserModel userModel = userModels.get(0);
-                                Toast.makeText(RegisterActivity.this, "注册成功，已默认登录", Toast.LENGTH_SHORT).show();
+                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getCode(),"200")){
+                            if (resultModel.getData()!=null&&!resultModel.getData().equals("")){
+                                UserModel userModel = (UserModel)resultModel.getData();
+                                Toast.makeText(RegisterActivity.this, "注册成功，已默认登录", Toast.LENGTH_LONG).show();
                                 AccountTool.saveUser(RegisterActivity.this,userModel);
                                 finish();
                             }
-
                         }else{
                             Toast.makeText(RegisterActivity.this, "已存在该用户名", Toast.LENGTH_SHORT).show();
                         }

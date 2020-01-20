@@ -8,17 +8,19 @@ import java.util.List;
 
 public class ResultModel<T> {
 
-    private String status;
+    private String code;
     private String message;
-    private List<T> data;
+    private T data;
+    private List<T> list;
 
-    public String getStatus() {
-        return status;
+    public String getCode() {
+        return code;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCode(String code) {
+        this.code = code;
     }
+
 
     public String getMessage() {
         return message;
@@ -28,20 +30,29 @@ public class ResultModel<T> {
         this.message = message;
     }
 
-    public List<T> getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(List<T> data) {
+    public void setData(T data) {
         this.data = data;
+    }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
     }
 
     @Override
     public String toString() {
         return "ResultModel{" +
-                "status='" + status + '\'' +
+                "code='" + code + '\'' +
                 ", message='" + message + '\'' +
                 ", data=" + data +
+                ", list=" + list +
                 '}';
     }
 }

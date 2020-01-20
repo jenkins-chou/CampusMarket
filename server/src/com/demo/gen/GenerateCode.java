@@ -18,8 +18,6 @@ import com.mysql.jdbc.ResultSet;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
-
-
 public class GenerateCode {
 	private static final String TEMPLATE_CONTROLLER_PATH = "src/com/demo/gen";
 	
@@ -53,17 +51,16 @@ public class GenerateCode {
 		//System.out.println("锟斤拷锟斤拷锟斤拷" + rs.getString(3));
 		//System.out.println("锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷锟斤拷" + rs.getString(2));
 		
-			if(rs.getString(3).equals("base_menu")||
-					rs.getString(3).equals("base_user")||
-					rs.getString(3).equals("base_user_type")){
-				
+			if(rs.getString(3).equals("base_wishlist")){
+//				genController(rs.getString(3));
+				genModel(rs.getString(3));
 			}else{
 				//genController(rs.getString(3));
 				//genURL(rs.getString(3));
 			}
 			//genController(rs.getString(3));
 			//genModel(rs.getString(3));
-			genURL(rs.getString(3));
+			//genURL(rs.getString(3));
 		}
 		con.close();
 		} catch (Exception e) {

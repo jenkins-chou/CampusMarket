@@ -86,8 +86,8 @@ public class UserInfoActivity extends BaseActivity {
         if (AccountTool.isLogin(this)){
             UserModel userModel = AccountTool.getLoginUser(this);
             if (userModel!=null){
-                name.setText(userModel.getName());
-                pass.setText(userModel.getPass());
+                name.setText(userModel.getUsername());
+                pass.setText(userModel.getPassword());
                 realname.setText(userModel.getRealname());
                 slogan.setText(userModel.getSlogan());
                 sex.setText(userModel.getSex());

@@ -27,6 +27,16 @@
         android:roundIcon="@mipmap/application"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.common.WishlistDetailActivity"></activity>
+        <activity android:name=".activity.common.WishlistEditActivity" />
+        <activity android:name=".activity.common.WishlistActivity" />
+        <activity android:name=".activity.common.SearchCommodityResultActivity" />
+        <activity android:name=".activity.common.SearchCommodityActivity" />
+        <activity android:name=".activity.common.MineCommodityCollectionActivity" />
+        <activity android:name=".activity.common.MineCommodityListActivity" />
+        <activity android:name=".activity.common.PlateSelectActivity" />
+        <activity android:name=".activity.common.CommodityEditActivity" />
+        <activity android:name=".activity.common.CommodityDetailActivity" />
         <activity android:name=".activity.common.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,9 +86,7 @@
         <activity android:name=".activity.student.StudentSelectCourseActivity" />
         <activity android:name=".activity.manager.ManagerReportListActivity" />
         <activity android:name=".activity.manager.ManagerScoreListActivity" />
-        <activity android:name=".activity.common.TestActivity">
-
-        </activity>
+        <activity android:name=".activity.common.TestActivity" />
     </application>
 
 </manifest>

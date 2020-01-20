@@ -61,7 +61,6 @@ public static final String DB_TABLE = "base_user";
 		JSONObject js = new JSONObject();
 		if(userModels!=null&&userModels.size()>=1){
 			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
-			js.put(Const.KEY_RES_DATA, userModels);
 			renderJson(JsonKit.toJson(js));
 		}else{
 			BaseUserModel model = getModel(BaseUserModel.class, "", true);
@@ -73,7 +72,7 @@ public static final String DB_TABLE = "base_user";
 			List<BaseUserModel> userModelsResult = BaseUserModel.dao.find("select * from "+DB_TABLE+" where username = '"+username+"' and del != 'delete'");
 			
 			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
-			js.put("data", userModelsResult);
+			js.put("data", (userModelsResult!=null&&userModelsResult.size()>0)?userModelsResult.get(0):"");
 			renderJson(JsonKit.toJson(js));
 		}
 	}

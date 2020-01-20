@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.LoginActivity;
+import com.jenking.spandroid.activity.common.MineCommodityCollectionActivity;
+import com.jenking.spandroid.activity.common.MineCommodityListActivity;
 import com.jenking.spandroid.activity.common.SettingActivity;
 import com.jenking.spandroid.activity.common.UserInfoActivity;
 import com.jenking.spandroid.activity.common.UserInfoAvatarActivity;
@@ -63,6 +65,26 @@ public class MainFragment3 extends Fragment {
         }
     }
 
+    @OnClick(R.id.mine_commodity)
+    void mine_commodity(){
+        if (AccountTool.isLogin(getContext())) {
+            Intent intent = new Intent(getContext(), MineCommodityListActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.mine_collection)
+    void mine_collection(){
+        if (AccountTool.isLogin(getContext())) {
+            Intent intent = new Intent(getContext(), MineCommodityCollectionActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @OnClick(R.id.setting)
     void setting(){
         Intent intent = new Intent(getContext(),SettingActivity.class);
@@ -83,7 +105,7 @@ public class MainFragment3 extends Fragment {
         if (AccountTool.isLogin(getContext())){
             userModel = AccountTool.getLoginUser(getContext());
             if (userModel!=null){
-                username.setText(userModel.getName());
+                username.setText(userModel.getUsername());
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.circleCrop();
                 requestOptions.error(R.mipmap.avatar_default);

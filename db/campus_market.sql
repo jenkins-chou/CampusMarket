@@ -1,19 +1,21 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : root
-Source Server Version : 50728
-Source Host           : localhost:3306
-Source Database       : campus_market
+ Source Server         : administrator
+ Source Server Type    : MySQL
+ Source Server Version : 50727
+ Source Host           : localhost:3306
+ Source Schema         : campus_market
 
-Target Server Type    : MYSQL
-Target Server Version : 50728
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50727
+ File Encoding         : 65001
 
-Date: 2019-12-08 19:10:24
+ Date: 20/01/2020 21:54:33
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 -- Table structure for base_collection
@@ -27,12 +29,18 @@ CREATE TABLE `base_collection` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_collection
 -- ----------------------------
-INSERT INTO `base_collection` VALUES ('1', null, null, '1575791347', '备注', 'normal');
+BEGIN;
+INSERT INTO `base_collection` VALUES (3, 4, 16, '1578804263', NULL, 'normal');
+INSERT INTO `base_collection` VALUES (4, 2, 16, '1578804273', NULL, 'normal');
+INSERT INTO `base_collection` VALUES (5, 6, 16, '1578807076', NULL, 'normal');
+INSERT INTO `base_collection` VALUES (6, 6, 16, '1578811145', NULL, 'normal');
+INSERT INTO `base_collection` VALUES (7, 2, 18, '1578840640', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_comment
@@ -52,7 +60,9 @@ CREATE TABLE `base_comment` (
 -- ----------------------------
 -- Records of base_comment
 -- ----------------------------
-INSERT INTO `base_comment` VALUES ('1', null, '商品', 'user_id', '1575791319', null, 'normal');
+BEGIN;
+INSERT INTO `base_comment` VALUES (1, NULL, '商品', 'user_id', '1575791319', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_commodity
@@ -61,6 +71,7 @@ DROP TABLE IF EXISTS `base_commodity`;
 CREATE TABLE `base_commodity` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate_id` varchar(255) DEFAULT NULL COMMENT '板块id',
+  `plate_name` varchar(255) DEFAULT NULL COMMENT '类型名称',
   `commodity_name` varchar(255) DEFAULT NULL COMMENT '商品名称',
   `commodity_price` varchar(255) DEFAULT NULL COMMENT '商品价格',
   `commodity_img` varchar(255) DEFAULT NULL COMMENT '商品图片',
@@ -68,18 +79,26 @@ CREATE TABLE `base_commodity` (
   `commodity_describe` varchar(255) DEFAULT NULL COMMENT '商品描述',
   `state` varchar(255) DEFAULT NULL COMMENT '状态',
   `commodity_provider` varchar(255) DEFAULT NULL COMMENT '商品发布者',
+  `commodity_provider_username` varchar(255) DEFAULT NULL COMMENT '商品发布者名称',
   `commodity_produce_time` varchar(255) DEFAULT NULL COMMENT '上缠日期',
   `commodity_validity` varchar(255) DEFAULT NULL COMMENT '有效期',
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_commodity
 -- ----------------------------
-INSERT INTO `base_commodity` VALUES ('1', null, null, null, null, null, null, null, null, null, null, '1575791365', null, 'delete');
+BEGIN;
+INSERT INTO `base_commodity` VALUES (2, '1', '电器', '测试商品', '123', 'upload/1578806472462.jpg', '123', '这是描述这是描述', NULL, '16', 'zzj', '56', '688', '1578738118', NULL, 'normal');
+INSERT INTO `base_commodity` VALUES (3, '1', '电器', 'uug', 'uhg', NULL, 'hhgs', 'hhgs', NULL, '16', 'zzj', 'unhgs', 'hhbhk', '1578751116', NULL, 'delete');
+INSERT INTO `base_commodity` VALUES (4, '1', '电器', '交易品', 'ghv', 'upload/1578806587760.jpg', 'bjhjkx', 'jbhjx', NULL, '16', 'zzj', 'hjvhs', 'jbgghs', '1578751581', NULL, 'normal');
+INSERT INTO `base_commodity` VALUES (5, '1', '电器', 'hjhhd', 'jhhid', NULL, 'jnhs', 'jjbkjkxxx', NULL, '16', 'zzj', 'ksnbss', 'iznhss', '1578752817', NULL, 'delete');
+INSERT INTO `base_commodity` VALUES (6, '1', '电器', '测了可口可乐了', '123', 'upload/1578814823851.jpg', '150', '描述', NULL, '16', 'zzj', '来来来', '12', '1578805893', NULL, 'delete');
+INSERT INTO `base_commodity` VALUES (7, '1', '电器', '测试标题22', '123', 'upload/1578840724921.jpg', '400', '描述', NULL, '18', '777', '2019', '10年', '1578840687', NULL, 'delete');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_menu
@@ -104,22 +123,24 @@ CREATE TABLE `base_menu` (
 -- ----------------------------
 -- Records of base_menu
 -- ----------------------------
-INSERT INTO `base_menu` VALUES ('1', '系统设置', '1', '0', null, '', '999', '', '4', '', '', 'delete');
-INSERT INTO `base_menu` VALUES ('2', '菜单设置', '2', '1', null, '../pages/manager/system/menu.html', '1', '', '4', '', '', 'delete');
-INSERT INTO `base_menu` VALUES ('118', '交易管理', '1', '1', null, null, '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('119', '用户管理', '1', '1', null, null, '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('120', '评论管理', '1', '1', null, null, '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('121', '模块管理', '1', '1', null, null, '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('122', '交易品管理', '2', '118', null, '../pages/manager/base_commodity/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('123', '订单管理', '2', '118', null, '../pages/manager/base_order/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('124', '用户列表', '2', '119', null, '../pages/manager/base_user/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('125', '用户类型列表', '2', '119', null, '../pages/manager/base_user_type/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('126', '评论管理', '2', '120', null, '../pages/manager/base_comment/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('127', '收藏管理', '2', '119', null, '../pages/manager/base_collection/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('128', '板块列表', '2', '121', null, '../pages/manager/base_plate/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('129', '留言列表', '2', '119', null, '../pages/manager/base_message/list.html', '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('130', '数据统计', '1', '1', null, null, '1', null, '4', null, null, 'normal');
-INSERT INTO `base_menu` VALUES ('131', '图表统计', '2', '130', null, '../pages/manager/statistics/index.html', '1', null, '4', null, null, 'normal');
+BEGIN;
+INSERT INTO `base_menu` VALUES (1, '系统设置', '1', '0', NULL, '', 999, '', '4', '', '', 'delete');
+INSERT INTO `base_menu` VALUES (2, '菜单设置', '2', '1', NULL, '../pages/manager/system/menu.html', 1, '', '4', '', '', 'delete');
+INSERT INTO `base_menu` VALUES (118, '交易管理', '1', '1', NULL, NULL, 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (119, '用户管理', '1', '1', NULL, NULL, 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (120, '评论管理', '1', '1', NULL, NULL, 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (121, '模块管理', '1', '1', NULL, NULL, 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (122, '交易品管理', '2', '118', NULL, '../pages/manager/base_commodity/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (123, '订单管理', '2', '118', NULL, '../pages/manager/base_order/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (124, '用户列表', '2', '119', NULL, '../pages/manager/base_user/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (125, '用户类型列表', '2', '119', NULL, '../pages/manager/base_user_type/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (126, '评论管理', '2', '120', NULL, '../pages/manager/base_comment/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (127, '收藏管理', '2', '119', NULL, '../pages/manager/base_collection/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (128, '板块列表', '2', '121', NULL, '../pages/manager/base_plate/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (129, '留言列表', '2', '119', NULL, '../pages/manager/base_message/list.html', 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (130, '数据统计', '1', '1', NULL, NULL, 1, NULL, '4', NULL, NULL, 'normal');
+INSERT INTO `base_menu` VALUES (131, '图表统计', '2', '130', NULL, '../pages/manager/statistics/index.html', 1, NULL, '4', NULL, NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_message
@@ -142,7 +163,9 @@ CREATE TABLE `base_message` (
 -- ----------------------------
 -- Records of base_message
 -- ----------------------------
-INSERT INTO `base_message` VALUES ('1', null, null, null, null, null, null, '1575791350', null, 'delete');
+BEGIN;
+INSERT INTO `base_message` VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, '1575791350', NULL, 'delete');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_module
@@ -162,11 +185,13 @@ CREATE TABLE `base_module` (
 -- ----------------------------
 -- Records of base_module
 -- ----------------------------
-INSERT INTO `base_module` VALUES ('1', null, 'module1', null, '1573224661', null, 'normal');
-INSERT INTO `base_module` VALUES ('2', null, null, null, '1573401476', null, 'normal');
-INSERT INTO `base_module` VALUES ('3', null, null, null, '1573401482', null, 'normal');
-INSERT INTO `base_module` VALUES ('4', null, null, null, '1573401496', null, 'normal');
-INSERT INTO `base_module` VALUES ('5', null, null, null, '1573401513', null, 'normal');
+BEGIN;
+INSERT INTO `base_module` VALUES (1, NULL, 'module1', NULL, '1573224661', NULL, 'normal');
+INSERT INTO `base_module` VALUES (2, NULL, NULL, NULL, '1573401476', NULL, 'normal');
+INSERT INTO `base_module` VALUES (3, NULL, NULL, NULL, '1573401482', NULL, 'normal');
+INSERT INTO `base_module` VALUES (4, NULL, NULL, NULL, '1573401496', NULL, 'normal');
+INSERT INTO `base_module` VALUES (5, NULL, NULL, NULL, '1573401513', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_order
@@ -187,8 +212,10 @@ CREATE TABLE `base_order` (
 -- ----------------------------
 -- Records of base_order
 -- ----------------------------
-INSERT INTO `base_order` VALUES ('1', null, null, null, null, '1575791369', null, 'delete');
-INSERT INTO `base_order` VALUES ('2', null, null, null, null, '1575791389', null, 'delete');
+BEGIN;
+INSERT INTO `base_order` VALUES (1, NULL, NULL, NULL, NULL, '1575791369', NULL, 'delete');
+INSERT INTO `base_order` VALUES (2, NULL, NULL, NULL, NULL, '1575791389', NULL, 'delete');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_plate
@@ -206,7 +233,9 @@ CREATE TABLE `base_plate` (
 -- ----------------------------
 -- Records of base_plate
 -- ----------------------------
-INSERT INTO `base_plate` VALUES ('1', '电器', '1575791300', null, 'normal');
+BEGIN;
+INSERT INTO `base_plate` VALUES (1, '电器', '1575791300', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_type
@@ -223,10 +252,6 @@ CREATE TABLE `base_type` (
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of base_type
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for base_user
@@ -254,16 +279,21 @@ CREATE TABLE `base_user` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_user
 -- ----------------------------
-INSERT INTO `base_user` VALUES ('7', '456', '456', null, null, null, null, null, null, null, null, null, null, '2', '教师', null, null, '1572004895', null, 'delete');
-INSERT INTO `base_user` VALUES ('8', 'admin', 'admin', '系统管理员', '134126', 'email', '联系地址', 'wchat', 'qq', '26', '', 'hello', '地区', '4', '系统管理员', null, null, null, null, 'normal');
-INSERT INTO `base_user` VALUES ('9', '123', '123', '周先生', '电话', 'email', '地址', '13413739238923', 'qq号', '21', null, '签名', '广东', '1', '学生', null, null, '1572147442', null, 'delete');
-INSERT INTO `base_user` VALUES ('12', '789', '789', null, null, null, null, null, null, null, null, null, null, '1', '学生', null, null, '1572150642', null, 'delete');
-INSERT INTO `base_user` VALUES ('13', '123', '123', null, null, null, null, null, null, null, null, null, null, '1', 'ѧ��', null, null, '1575559080', null, 'normal');
+BEGIN;
+INSERT INTO `base_user` VALUES (7, '456', '456', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2', '教师', NULL, NULL, '1572004895', NULL, 'delete');
+INSERT INTO `base_user` VALUES (8, 'admin', 'admin', '系统管理员', '134126', 'email', '联系地址', 'wchat', 'qq', '26', '', 'hello', '地区', '4', '系统管理员', NULL, NULL, NULL, NULL, 'normal');
+INSERT INTO `base_user` VALUES (9, '123', '123', '周先生', '电话', 'email', '地址', '13413739238923', 'qq号', '21', NULL, '签名', '广东', '1', '学生', NULL, NULL, '1572147442', NULL, 'delete');
+INSERT INTO `base_user` VALUES (12, '789', '789', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', '学生', NULL, NULL, '1572150642', NULL, 'delete');
+INSERT INTO `base_user` VALUES (13, '123', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'ѧ��', NULL, NULL, '1575559080', NULL, 'normal');
+INSERT INTO `base_user` VALUES (16, 'zzj', 'zzj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'upload/1578806713780.jpg', NULL, NULL, '1', 'ѧ��', NULL, NULL, '1578733159', NULL, 'normal');
+INSERT INTO `base_user` VALUES (17, 'tt', 'tt', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'upload/1578839709815.jpg', NULL, NULL, '1', 'ѧ��', NULL, NULL, '1578839699', NULL, 'normal');
+INSERT INTO `base_user` VALUES (18, '777', '777', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'upload/1578840782215.jpg', NULL, NULL, '1', 'ѧ��', NULL, NULL, '1578840615', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_user_type
@@ -283,10 +313,42 @@ CREATE TABLE `base_user_type` (
 -- ----------------------------
 -- Records of base_user_type
 -- ----------------------------
-INSERT INTO `base_user_type` VALUES ('1', '1', null, '学生', null, null, 'delete');
-INSERT INTO `base_user_type` VALUES ('2', '2', null, '教师', null, null, 'normal');
-INSERT INTO `base_user_type` VALUES ('3', '3', null, '管理员', null, null, 'delete');
-INSERT INTO `base_user_type` VALUES ('4', '4', null, '管理员', null, null, 'normal');
+BEGIN;
+INSERT INTO `base_user_type` VALUES (1, '1', NULL, '学生', NULL, NULL, 'delete');
+INSERT INTO `base_user_type` VALUES (2, '2', NULL, '教师', NULL, NULL, 'normal');
+INSERT INTO `base_user_type` VALUES (3, '3', NULL, '管理员', NULL, NULL, 'delete');
+INSERT INTO `base_user_type` VALUES (4, '4', NULL, '管理员', NULL, NULL, 'normal');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for base_wishlist
+-- ----------------------------
+DROP TABLE IF EXISTS `base_wishlist`;
+CREATE TABLE `base_wishlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `plate_id` varchar(255) DEFAULT NULL COMMENT '板块id',
+  `plate_name` varchar(255) DEFAULT NULL COMMENT '类型名称',
+  `wish_name` varchar(255) DEFAULT NULL COMMENT '商品名称',
+  `wish_price` varchar(255) DEFAULT NULL COMMENT '商品价格',
+  `wish_describe` varchar(255) DEFAULT NULL COMMENT '商品描述',
+  `wish_provider` varchar(255) DEFAULT NULL COMMENT '商品发布者',
+  `wish_provider_username` varchar(255) DEFAULT NULL COMMENT '商品发布者名称',
+  `wish_provider_avatar` varchar(255) DEFAULT NULL COMMENT '发布者头像',
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of base_wishlist
+-- ----------------------------
+BEGIN;
+INSERT INTO `base_wishlist` VALUES (7, '1', '电器', 'blog', '120', '去看', '16', 'zzj', 'upload/1578806713780.jpg', '1578829045', NULL, 'delete');
+INSERT INTO `base_wishlist` VALUES (8, '1', '电器', '恶魔来了', '寄了', '龙', '16', 'zzj', 'upload/1578806713780.jpg', '1578830607', NULL, 'delete');
+INSERT INTO `base_wishlist` VALUES (9, '1', '电器', '来来来', '120', '描述', '16', 'zzj', 'upload/1578806713780.jpg', '1578838432', NULL, 'normal');
+INSERT INTO `base_wishlist` VALUES (10, '1', '电器', '标题', '130', '描述', '18', '777', 'null', '1578840769', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for transaction_record
@@ -302,6 +364,4 @@ CREATE TABLE `transaction_record` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of transaction_record
--- ----------------------------
+SET FOREIGN_KEY_CHECKS = 1;
