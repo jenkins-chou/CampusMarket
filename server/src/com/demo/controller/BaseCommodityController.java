@@ -7,12 +7,18 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
+import com.demo.models.AccountModel;
 import com.demo.models.BaseCommodityModel;
+import com.demo.models.BaseOrderModel;
+import com.demo.models.BaseOrderStateModel;
+import com.demo.utils.CheckUtils;
 import com.demo.utils.Const;
 import com.demo.utils.CrossOrigin;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.JsonKit;
 import com.demo.utils.DatabaseUtil;
+import com.demo.utils.Log;
+import com.demo.utils.StringUtil;
 
 @CrossOrigin
 public class BaseCommodityController  extends Controller {
@@ -31,6 +37,74 @@ public class BaseCommodityController  extends Controller {
 		hidden,//�����ֶ�
 		custom,//�Զ���
 		normal//Ĭ��
+	}
+	
+
+	
+	public void purchase(){
+		try {
+			String user_id = getPara("party_b");
+			String money = getPara("money");
+			Log.i(money);
+			Log.i(StringUtil.isNumber(money)+"");
+			
+			List<AccountModel> accountModels = AccountModel.dao.find("select * from account where user_id = '"+user_id+"' and del != 'delete'");
+			if(CheckUtils.checkArrayIsNotNull(accountModels)){
+				AccountModel accountModel = accountModels.get(0);
+				if(StringUtil.isNumber(money) || (StringUtil.isNotEmpty(money) && money.equals("0.0"))){
+					double preBalance = accountModel.getDouble("balance");
+					double couponMoneyDouble = Double.parseDouble(money);
+					if(preBalance>couponMoneyDouble){
+					
+						
+						accountModel.set("balance", preBalance-couponMoneyDouble);
+						accountModel.update();
+						
+						BaseOrderModel orderModel = getModel(BaseOrderModel.class,"");
+						orderModel.set(Const.KEY_DB_CREATE_TIME, System.currentTimeMillis()/1000+"");
+						orderModel.set(Const.KEY_DB_DEL, Const.OPTION_DB_NORMAL);
+						orderModel.save();
+						
+						BaseOrderStateModel stateModel = new BaseOrderStateModel();
+						stateModel.set("order_id", orderModel.get("id"));
+						stateModel.set("state", "create");
+						stateModel.set(Const.KEY_DB_CREATE_TIME, System.currentTimeMillis()/1000+"");
+						stateModel.set(Const.KEY_DB_DEL, Const.OPTION_DB_NORMAL);
+						stateModel.save();
+					
+						JSONObject js = new JSONObject();
+						js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+						renderJson(js.toJSONString());
+						
+					}else{
+						JSONObject js = new JSONObject();
+						js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+						js.put(Const.KEY_RES_MESSAGE, "余额不足0");
+						renderJson(js.toJSONString());
+					}
+				}else{
+					JSONObject js = new JSONObject();
+					js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+					js.put(Const.KEY_RES_MESSAGE, "余额不足1");
+					renderJson(js.toJSONString());
+				}
+				
+			}else{
+				JSONObject js = new JSONObject();
+				js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+				js.put(Const.KEY_RES_MESSAGE, "余额不足2");
+				renderJson(js.toJSONString());
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+			JSONObject js = new JSONObject();
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_500);
+			js.put(Const.KEY_RES_MESSAGE, e.toString());
+			renderJson(js.toJSONString());
+		}
 	}
 	
 	@CrossOrigin

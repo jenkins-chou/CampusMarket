@@ -232,6 +232,11 @@ public class MainFragment1 extends Fragment {
             }
 
             @Override
+            public void purchaseCommodity(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void callback(boolean isSuccess, Object object) {
 
             }

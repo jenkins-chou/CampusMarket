@@ -49,7 +49,10 @@ public class UserInfoAvatarActivity extends BaseActivity {
     @BindView(R.id.loading)
     CommonLoading loading;
 
-
+    @OnClick(R.id.back)
+    void back(){
+        finish();
+    }
 
     @OnClick({R.id.avatar,R.id.avatar_text})
     void setAvatar(){
@@ -146,25 +149,6 @@ public class UserInfoAvatarActivity extends BaseActivity {
 
             }
 
-            @Override
-            public void getTeachers(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getTeachersByCollege(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getAllStudent(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getStudentByClass(boolean isSuccess, Object object) {
-
-            }
         });
     }
 

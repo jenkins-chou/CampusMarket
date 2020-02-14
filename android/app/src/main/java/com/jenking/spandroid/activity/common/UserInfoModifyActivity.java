@@ -193,25 +193,6 @@ public class UserInfoModifyActivity extends BaseActivity {
 
             }
 
-            @Override
-            public void getTeachers(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getTeachersByCollege(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getAllStudent(boolean isSuccess, Object object) {
-
-            }
-
-            @Override
-            public void getStudentByClass(boolean isSuccess, Object object) {
-
-            }
         });
     }
 

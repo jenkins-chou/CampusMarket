@@ -9,7 +9,9 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.DatabaseMetaData;
@@ -17,6 +19,8 @@ import com.mysql.jdbc.ResultSet;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+
+
 
 public class GenerateCode {
 	private static final String TEMPLATE_CONTROLLER_PATH = "src/com/demo/gen";
@@ -38,40 +42,41 @@ public class GenerateCode {
 		
 		//System.out.println(getUpper("postgraduate_exam"));
 	}
-	public static void getAllTable() throws ClassNotFoundException, SQLException{
+	public static List<String> getAllTable() throws ClassNotFoundException, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/campus_market?user=root&password=root");
-		getTableNameByCon(conn);
+		return getTableNameByCon(conn);
 	}
-	public static void getTableNameByCon(Connection con) {
+	public static List<String> getTableNameByCon(Connection con) {
 		try {
 		DatabaseMetaData meta = (DatabaseMetaData) con.getMetaData();
 		ResultSet rs = (ResultSet) meta.getTables(null, null, null,new String[] { "TABLE" });
+		List<String> tables = new ArrayList();
 		while (rs.next()) {
-		//System.out.println("锟斤拷锟斤拷锟斤拷" + rs.getString(3));
-		//System.out.println("锟斤拷锟斤拷锟斤拷锟矫伙拷锟斤拷锟斤拷" + rs.getString(2));
-		
-			if(rs.getString(3).equals("base_wishlist")){
-//				genController(rs.getString(3));
-				genModel(rs.getString(3));
+			if(rs.getString(3).equals("base_menu")||
+					rs.getString(3).equals("base_user")||
+					rs.getString(3).equals("base_user_type")){
+				
 			}else{
 				//genController(rs.getString(3));
+				//genModel(rs.getString(3));
 				//genURL(rs.getString(3));
 			}
-			//genController(rs.getString(3));
-			//genModel(rs.getString(3));
-			//genURL(rs.getString(3));
+			
+			tables.add(rs.getString(3));
+			
 		}
 		con.close();
+		return tables;
 		} catch (Exception e) {
 		try {
 		con.close();
+		return null;
 		} catch (SQLException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
+		return null;
 		}
-		// TODO Auto-generated catch block
-		e.printStackTrace();
 		}
 	}
 	
@@ -97,7 +102,7 @@ public class GenerateCode {
             // step6 锟斤拷锟斤拷募锟�
             template.process(dataMap, out);
             ;
-            System.out.println("me.add(\""+tableName+"\","+className+".class);");
+            System.out.println("me.add(\""+tableName+"\","+className+".class)");
             //System.out.println("----------------->"+className+".java 锟侥硷拷锟斤拷锟斤拷锟缴癸拷 !");
         } catch (Exception e) {
             e.printStackTrace();

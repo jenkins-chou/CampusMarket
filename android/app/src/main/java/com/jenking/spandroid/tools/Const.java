@@ -1,13 +1,19 @@
 package com.jenking.spandroid.tools;
 
 public class Const {
-    public final static String User_type_normal = "1";
-    public final static String User_type_referee = "2";
-    public final static String User_type_manager = "3";
 
-    public final static String Match_type_one = "1";//报名中
-    public final static String Match_type_two = "2";//比赛中
-    public final static String Match_type_three = "3";//比赛完毕
-    public final static String Match_type_four = "4";//发布成绩
+    public static final String KEY_RES_CODE = "code";
+    public static final String KEY_RES_MESSAGE = "message";
+    public static final String KEY_RES_DATA = "data";
+
+    public static final String KEY_RES_CODE_200 = "200";
+    public static final String KEY_RES_CODE_201 = "201";
+    public static final String KEY_RES_CODE_500 = "500";
+
+    public static final String OPTION_DB_NORMAL = "normal";
+    public static final String OPTION_DB_DELETE = "delete";
+
+    public static final String OPTION_SUCCESS = "success";
+    public static final String OPTION_FAILED = "failed";
 
 }

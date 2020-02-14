@@ -11,11 +11,88 @@
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 20/01/2020 21:54:33
+ Date: 14/02/2020 14:35:29
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for account
+-- ----------------------------
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `balance` double DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `update_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of account
+-- ----------------------------
+BEGIN;
+INSERT INTO `account` VALUES (1, '8', 15197, '1566744032', '1566921059', NULL, 'normal');
+INSERT INTO `account` VALUES (2, '13', 8264, '1581317835', '1581355031', NULL, 'normal');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for account_recharge
+-- ----------------------------
+DROP TABLE IF EXISTS `account_recharge`;
+CREATE TABLE `account_recharge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `source` varchar(255) DEFAULT NULL,
+  `money` double(255,0) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of account_recharge
+-- ----------------------------
+BEGIN;
+INSERT INTO `account_recharge` VALUES (1, 8, NULL, 7885, 'success', NULL, '1566744032', NULL, 'normal');
+INSERT INTO `account_recharge` VALUES (2, 8, NULL, 10000, 'success', NULL, '1566921059', NULL, 'normal');
+INSERT INTO `account_recharge` VALUES (3, 13, NULL, 1000, 'success', NULL, '1581317835', NULL, 'normal');
+INSERT INTO `account_recharge` VALUES (4, 13, NULL, 456, 'success', NULL, '1581318014', NULL, 'normal');
+INSERT INTO `account_recharge` VALUES (5, 13, NULL, 10000, 'success', NULL, '1581355031', NULL, 'normal');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for bankcard
+-- ----------------------------
+DROP TABLE IF EXISTS `bankcard`;
+CREATE TABLE `bankcard` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `bank_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `bankcard_number` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `bankcard_username` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `bankcard_phone` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `create_time` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `remark` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `del` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of bankcard
+-- ----------------------------
+BEGIN;
+INSERT INTO `bankcard` VALUES (1, '8', 'dgg', 'ghgf', 'ghhf', 'uhggh', '1566744010', NULL, 'normal');
+INSERT INTO `bankcard` VALUES (2, NULL, '招商银行', '45621354', 'zzj', '12345678910', '1581255635', NULL, 'normal');
+INSERT INTO `bankcard` VALUES (3, '13', '招商银行', '123', '周一', '1365234', '1581255866', NULL, 'normal');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for base_collection
@@ -29,7 +106,7 @@ CREATE TABLE `base_collection` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_collection
@@ -40,6 +117,7 @@ INSERT INTO `base_collection` VALUES (4, 2, 16, '1578804273', NULL, 'normal');
 INSERT INTO `base_collection` VALUES (5, 6, 16, '1578807076', NULL, 'normal');
 INSERT INTO `base_collection` VALUES (6, 6, 16, '1578811145', NULL, 'normal');
 INSERT INTO `base_collection` VALUES (7, 2, 18, '1578840640', NULL, 'normal');
+INSERT INTO `base_collection` VALUES (8, 2, 13, '1581167782', NULL, 'normal');
 COMMIT;
 
 -- ----------------------------
@@ -86,7 +164,7 @@ CREATE TABLE `base_commodity` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_commodity
@@ -98,6 +176,7 @@ INSERT INTO `base_commodity` VALUES (4, '1', '电器', '交易品', 'ghv', 'uplo
 INSERT INTO `base_commodity` VALUES (5, '1', '电器', 'hjhhd', 'jhhid', NULL, 'jnhs', 'jjbkjkxxx', NULL, '16', 'zzj', 'ksnbss', 'iznhss', '1578752817', NULL, 'delete');
 INSERT INTO `base_commodity` VALUES (6, '1', '电器', '测了可口可乐了', '123', 'upload/1578814823851.jpg', '150', '描述', NULL, '16', 'zzj', '来来来', '12', '1578805893', NULL, 'delete');
 INSERT INTO `base_commodity` VALUES (7, '1', '电器', '测试标题22', '123', 'upload/1578840724921.jpg', '400', '描述', NULL, '18', '777', '2019', '10年', '1578840687', NULL, 'delete');
+INSERT INTO `base_commodity` VALUES (8, '1', '电器', '苹果笔记本', '1350', 'upload/1581405572402.jpg', '2200', '描述', NULL, '13', '123', '日期', '有效期', '1581327012', NULL, 'normal');
 COMMIT;
 
 -- ----------------------------
@@ -202,19 +281,46 @@ CREATE TABLE `base_order` (
   `party_a` varchar(255) DEFAULT NULL COMMENT '卖方',
   `party_b` varchar(255) DEFAULT NULL COMMENT '买方',
   `commodity_id` varchar(255) DEFAULT NULL COMMENT '商品',
-  `state` varchar(255) DEFAULT NULL COMMENT '状态',
+  `status` varchar(255) DEFAULT NULL COMMENT '状态,完成或未完成',
+  `money` varchar(255) DEFAULT NULL COMMENT '总价',
+  `shipping_address_id` varchar(255) DEFAULT NULL,
+  `shipping_address_detail` varchar(255) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL COMMENT '详细',
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_order
 -- ----------------------------
 BEGIN;
-INSERT INTO `base_order` VALUES (1, NULL, NULL, NULL, NULL, '1575791369', NULL, 'delete');
-INSERT INTO `base_order` VALUES (2, NULL, NULL, NULL, NULL, '1575791389', NULL, 'delete');
+INSERT INTO `base_order` VALUES (3, '16', '13', '2', 'complete', '123', '1', '广东省深圳市南山区天后博物馆', NULL, '1581404597', NULL, 'normal');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for base_order_state
+-- ----------------------------
+DROP TABLE IF EXISTS `base_order_state`;
+CREATE TABLE `base_order_state` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `order_id` varchar(255) DEFAULT NULL COMMENT 'moduleid',
+  `state` varchar(255) DEFAULT NULL COMMENT '状态',
+  `create_time` varchar(255) DEFAULT NULL COMMENT '创建时间',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of base_order_state
+-- ----------------------------
+BEGIN;
+INSERT INTO `base_order_state` VALUES (1, '3', 'create', '1581404597', NULL, 'delete');
+INSERT INTO `base_order_state` VALUES (2, '3', 'hbggd', '1581609522', NULL, 'delete');
+INSERT INTO `base_order_state` VALUES (3, '3', 'nbhd', '1581609528', NULL, 'delete');
+INSERT INTO `base_order_state` VALUES (4, '3', 'cgjh', '1581609599', NULL, 'delete');
 COMMIT;
 
 -- ----------------------------
@@ -348,6 +454,31 @@ INSERT INTO `base_wishlist` VALUES (7, '1', '电器', 'blog', '120', '去看', '
 INSERT INTO `base_wishlist` VALUES (8, '1', '电器', '恶魔来了', '寄了', '龙', '16', 'zzj', 'upload/1578806713780.jpg', '1578830607', NULL, 'delete');
 INSERT INTO `base_wishlist` VALUES (9, '1', '电器', '来来来', '120', '描述', '16', 'zzj', 'upload/1578806713780.jpg', '1578838432', NULL, 'normal');
 INSERT INTO `base_wishlist` VALUES (10, '1', '电器', '标题', '130', '描述', '18', '777', 'null', '1578840769', NULL, 'normal');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for shipping_address
+-- ----------------------------
+DROP TABLE IF EXISTS `shipping_address`;
+CREATE TABLE `shipping_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_id` varchar(255) DEFAULT NULL COMMENT '用户id',
+  `province` varchar(255) DEFAULT NULL COMMENT '省份',
+  `city` varchar(255) DEFAULT NULL COMMENT '城市',
+  `address` varchar(255) DEFAULT NULL COMMENT '地址',
+  `is_default` varchar(255) DEFAULT NULL COMMENT '默认地址',
+  `create_time` varchar(255) DEFAULT NULL COMMENT '创建时间',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shipping_address
+-- ----------------------------
+BEGIN;
+INSERT INTO `shipping_address` VALUES (1, '13', '广东省', '深圳市', '南山区天后博物馆', NULL, '1581325612', NULL, 'normal');
+INSERT INTO `shipping_address` VALUES (2, '13', '广东省', '广州市', '天河城百货', NULL, '1581326232', NULL, 'delete');
 COMMIT;
 
 -- ----------------------------

@@ -24,7 +24,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp" />
             <TextView
-                android:text="分类"
+                android:text="求购"
                 android:textColor="@color/white"
                 android:layout_marginLeft="2dp"
                 android:layout_centerVertical="true"

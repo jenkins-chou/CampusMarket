@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/base_layout_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/main_color"
+        android:layout_height="@dimen/header_height">
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_margin="10dp"
+                android:src="@mipmap/transaction"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:text="交易"
+                android:textColor="@color/white"
+                android:textSize="@dimen/header_title_textsize" />
+        </LinearLayout>
+
+        <com.flyco.tablayout.SegmentTabLayout
+            android:id="@+id/segmentTabLayout"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            tl:tl_bar_color="#ffffff"
+            tl:tl_indicator_color="@color/colorAccent"
+            tl:tl_indicator_corner_radius="8dp"
+            tl:tl_tab_padding="20dp"/>
+
+        <TextView
+            android:id="@+id/mine_wishlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_title_textsize" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:background="@color/base_layout_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -1,5 +1,5 @@
 //后台服务器访问地址
-var server_url = 'http://zzj.mynatapp.cc';
+var server_url = 'http://localhost:8888';
 
 //接口URI  --不用修改
 var URI_LOGIN = '/base_user/login';

@@ -183,6 +183,11 @@ public class CommodityEditActivity extends BaseActivity {
             }
 
             @Override
+            public void purchaseCommodity(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void callback(boolean isSuccess, Object object) {
 
             }

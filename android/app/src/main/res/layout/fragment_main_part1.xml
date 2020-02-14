@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="2dp"
-                android:text="交易"
+                android:text="闲置品"
                 android:textColor="@color/white"
                 android:textSize="@dimen/header_title_textsize" />
         </LinearLayout>

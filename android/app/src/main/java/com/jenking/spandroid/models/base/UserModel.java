@@ -28,6 +28,7 @@ public class UserModel {
     public String school_name;
     public String remark;
     public String del;
+    public String pay_pwd;
 
     public String getId() {
         return id;
@@ -245,6 +246,14 @@ public class UserModel {
         this.del = del;
     }
 
+    public String getPay_pwd() {
+        return pay_pwd;
+    }
+
+    public void setPay_pwd(String pay_pwd) {
+        this.pay_pwd = pay_pwd;
+    }
+
     @Override
     public String toString() {
         return "UserModel{" +
@@ -273,6 +282,7 @@ public class UserModel {
                 ", college_name='" + college_name + '\'' +
                 ", school_id='" + school_id + '\'' +
                 ", school_name='" + school_name + '\'' +
+                ", pay_pwd='" + pay_pwd + '\'' +
                 ", remark='" + remark + '\'' +
                 ", del='" + del + '\'' +
                 '}';

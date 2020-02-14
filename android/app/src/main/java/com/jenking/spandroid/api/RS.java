@@ -2,6 +2,8 @@ package com.jenking.spandroid.api;
 
 import android.content.Context;
 
+import com.jenking.spandroid.tools.AccountTool;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,9 @@ public class RS {
      */
     public static Map<String,String> getBaseParams(Context context){
         Map<String,String> params = new HashMap<>();
+        if (AccountTool.isLogin(context)){
+            params.put("user_id", AccountTool.getLoginUser(context).getId());
+        }
         return params;
     }
 }

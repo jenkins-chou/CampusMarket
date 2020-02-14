@@ -147,11 +147,6 @@ public class MineCommodityCollectionActivity extends BaseActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         getData();

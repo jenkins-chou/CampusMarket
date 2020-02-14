@@ -118,6 +118,17 @@ public class CommodityDetailActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.purchase)
+    void purchase(){
+        if (AccountTool.isLogin(this) && model !=null){
+            Intent intent = new Intent(this, CommodityPurchaseActivity.class);
+            intent.putExtra("model",new Gson().toJson(model));
+            intent.putExtra("commodity_provider",model.getCommodity_provider());
+            intent.putExtra("commodity_provider_username",model.getCommodity_provider_username());
+            startActivity(intent);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,6 +195,11 @@ public class CommodityDetailActivity extends BaseActivity {
             }
 
             @Override
+            public void purchaseCommodity(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void callback(boolean isSuccess, Object object) {
 
             }
@@ -234,13 +250,14 @@ public class CommodityDetailActivity extends BaseActivity {
         Glide.with(this).load(BaseAPI.base_url+model.getCommodity_img()).apply(requestOptions).into(commodity_img);
         commodity_name.setText(model.getCommodity_name());
         commodity_price.setText(model.getCommodity_price());
-        commodity_provider.setText(model.getCommodity_provider_username());
+        commodity_provider.setText("卖家："+model.getCommodity_provider_username());
         commodity_plate.setText(model.getPlate_name());
-        commodity_old_price.setText(model.getCommodity_old_price());
+        commodity_old_price.setText("¥ "+model.getCommodity_old_price());
         commodity_describe.setText(model.getCommodity_describe());
         commodity_produce_time.setText(model.getCommodity_produce_time());
         commodity_validity.setText(model.getCommodity_validity());
     }
+
     void initFooter(){
         footer_edit.setVisibility(View.GONE);
         footer_normal.setVisibility(View.GONE);

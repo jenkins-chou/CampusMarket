@@ -27,6 +27,22 @@ public class AccountTool {
         SPUtils.put(context,SPUtils.FILE_USER,SPUtils.user_object,userModelJson);
     }
 
+    public final static void reSaveUser(Context context,UserModel tempModel){
+        UserModel localModel = getLoginUser(context);
+        if (tempModel != null && localModel != null){
+            localModel.username = tempModel.username;
+            localModel.sex = tempModel.sex;
+            localModel.nation = tempModel.nation;
+            localModel.age = tempModel.age;
+            localModel.email = tempModel.email;
+            localModel.phone = tempModel.phone;
+            localModel.realname = tempModel.realname;
+            localModel.slogan = tempModel.slogan;
+            localModel.pay_pwd = tempModel.pay_pwd;
+            saveUser(context,localModel);
+        }
+    }
+
     //获取用户类型
     public final static String getUserType(Context context){
         if (context==null)return null;

@@ -156,12 +156,6 @@ public class UserPresenter {
 
         void updateUser(boolean isSuccess, Object object);
         void deleteUser(boolean isSuccess, Object object);
-
-        void getTeachers(boolean isSuccess, Object object);
-        void getTeachersByCollege(boolean isSuccess, Object object);
-
-        void getAllStudent(boolean isSuccess, Object object);
-        void getStudentByClass(boolean isSuccess, Object object);
     }
 
 }

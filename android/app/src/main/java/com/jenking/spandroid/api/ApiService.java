@@ -1,10 +1,16 @@
 package com.jenking.spandroid.api;
 
 import com.jenking.spandroid.models.base.CommodityModel;
+import com.jenking.spandroid.models.base.OrderModel;
 import com.jenking.spandroid.models.base.PlateModel;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.base.ShippingAddressModel;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.models.base.WishListModel;
+import com.jenking.spandroid.models.business.account.AccountRechargeModel;
+import com.jenking.spandroid.models.business.account.BalanceAndCoupon;
+import com.jenking.spandroid.models.business.account.BankCardModel;
+import com.jenking.spandroid.models.business.account.OrderStateModel;
 
 import java.util.Map;
 
@@ -73,6 +79,10 @@ public interface ApiService {
     @POST("base_commodity/getAllByProviderMobile")
     Observable<ResultModel<CommodityModel>> getAllCommodityByProvider(@FieldMap Map<String, String> body);
 
+    @FormUrlEncoded
+    @POST("base_commodity/purchase")
+    Observable<ResultModel<CommodityModel>> purchaseCommodity(@FieldMap Map<String, String> body);
+
 
 
 
@@ -104,6 +114,80 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("base_wishlist/getAllByProviderMobile")
     Observable<ResultModel<WishListModel>> getAllByProviderMobile(@FieldMap Map<String, String> body);
+
+    //account
+    @FormUrlEncoded
+    @POST("account/getBalanceAndCoupon")
+    Observable<ResultModel<BalanceAndCoupon>> getBalanceAndCoupon(@FieldMap Map<String, String> body);
+
+    //充值
+    @FormUrlEncoded
+    @POST("account_recharge/recharge")
+    Observable<ResultModel> recharge(@FieldMap Map<String, String> body);
+
+    //充值记录
+    @FormUrlEncoded
+    @POST("account_recharge/getAllEntityByUserId")
+    Observable<ResultModel<AccountRechargeModel>> getRechargeRecord(@FieldMap Map<String, String> body);
+
+    //获取用户所有银行卡
+    @FormUrlEncoded
+    @POST("bankcard/getAllEntityByUserId")
+    Observable<ResultModel<BankCardModel>> getBankCard(@FieldMap Map<String, String> body);
+
+    //绑定银行卡
+    @FormUrlEncoded
+    @POST("bankcard/addEntity")
+    Observable<ResultModel> bindBankCard(@FieldMap Map<String, String> body);
+
+    //重置银行卡
+    @FormUrlEncoded
+    @POST("bankcard/deleteEntity")
+    Observable<ResultModel> deleteBankCard(@FieldMap Map<String, String> body);
+
+    //收货地址 添加
+    @FormUrlEncoded
+    @POST("shipping_address/add")
+    Observable<ResultModel<ShippingAddressModel>> addShippingAddress(@FieldMap Map<String, String> body);
+
+    //收货地址 删除
+    @FormUrlEncoded
+    @POST("shipping_address/delete")
+    Observable<ResultModel<ShippingAddressModel>> deleteShippingAddress(@FieldMap Map<String, String> body);
+
+    //收货地址 设置默认
+    @FormUrlEncoded
+    @POST("shipping_address/setDefault")
+    Observable<ResultModel<ShippingAddressModel>> setDefaultShippingAddress(@FieldMap Map<String, String> body);
+
+    //收货地址 设置默认
+    @FormUrlEncoded
+    @POST("shipping_address/getShippingAddressByUserId")
+    Observable<ResultModel<ShippingAddressModel>> getShippingAddressByUserId(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_order/getMineSellList")
+    Observable<ResultModel<OrderModel>> getMineSellList(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_order/getMinePurchaseList")
+    Observable<ResultModel<OrderModel>> getMinePurchaseList(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_order/confirmReceipt")
+    Observable<ResultModel<OrderModel>> updateOrder(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_order/getOrderStateList")
+    Observable<ResultModel<OrderStateModel>> getOrderStateList(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_order_state/delete")
+    Observable<ResultModel<OrderStateModel>> deleteOrderState(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("base_order_state/add")
+    Observable<ResultModel<OrderStateModel>> addOrderState(@FieldMap Map<String, String> body);
 
 
 }

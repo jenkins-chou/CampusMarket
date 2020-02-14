@@ -12,6 +12,7 @@ public class ResultModel<T> {
     private String message;
     private T data;
     private List<T> list;
+    private String modelJson;
 
     public String getCode() {
         return code;
@@ -46,6 +47,14 @@ public class ResultModel<T> {
         this.list = list;
     }
 
+    public String getModelJson() {
+        return modelJson;
+    }
+
+    public void setModelJson(String modelJson) {
+        this.modelJson = modelJson;
+    }
+
     @Override
     public String toString() {
         return "ResultModel{" +
@@ -53,6 +62,7 @@ public class ResultModel<T> {
                 ", message='" + message + '\'' +
                 ", data=" + data +
                 ", list=" + list +
+                ", modelJson=" + modelJson +
                 '}';
     }
 }

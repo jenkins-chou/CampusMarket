@@ -16,6 +16,7 @@ import com.jenking.spandroid.R;
 import com.jenking.spandroid.fragment.common.MainFragment1;
 import com.jenking.spandroid.fragment.common.MainFragment2;
 import com.jenking.spandroid.fragment.common.MainFragment3;
+import com.jenking.spandroid.fragment.common.MainFragment4;
 import com.jenking.spandroid.tools.AccountTool;
 
 import butterknife.BindView;
@@ -32,7 +33,7 @@ public class MainActivity extends BaseActivity {
     FrameLayout fl_content;
 
     //Fragment Object
-    private Fragment fg1,fg2,fg3;
+    private Fragment fg1,fg2,fg3,fg4;
     private FragmentManager fManager;
 
     @Override
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity {
                 .setMode(BottomNavigationBar.MODE_FIXED)
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .addItem(new BottomNavigationItem(R.mipmap.main_nav_all, "闲置品").setActiveColorResource(R.color.main_color))
+                .addItem(new BottomNavigationItem(R.mipmap.transaction, "交易").setActiveColorResource(R.color.main_color))
                 .addItem(new BottomNavigationItem(R.mipmap.main_nav_course, "求购").setActiveColorResource(R.color.main_color))
                 .addItem(new BottomNavigationItem(R.mipmap.main_nav_mine, "我的").setActiveColorResource(R.color.main_color))
                 .setFirstSelectedPosition(0)
@@ -91,6 +93,14 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
             case 1:
+                if (fg4==null){
+                    fg4 = new MainFragment4();
+                    fTransaction.add(R.id.ly_content,fg4);
+                }else{
+                    fTransaction.show(fg4);
+                }
+                break;
+            case 2:
                 if (fg2==null){
                     fg2 = new MainFragment2();
                     fTransaction.add(R.id.ly_content,fg2);
@@ -98,7 +108,7 @@ public class MainActivity extends BaseActivity {
                     fTransaction.show(fg2);
                 }
                 break;
-            case 2:
+            case 3:
                 if (fg3==null){
                     fg3 = new MainFragment3();
                     fTransaction.add(R.id.ly_content,fg3);
@@ -114,6 +124,7 @@ public class MainActivity extends BaseActivity {
         if(fg1 != null)fragmentTransaction.hide(fg1);
         if(fg2 != null)fragmentTransaction.hide(fg2);
         if(fg3 != null)fragmentTransaction.hide(fg3);
+        if(fg4 != null)fragmentTransaction.hide(fg4);
     }
 
     @Override

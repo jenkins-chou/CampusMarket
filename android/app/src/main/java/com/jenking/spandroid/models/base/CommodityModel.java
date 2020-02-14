@@ -7,15 +7,15 @@ public class CommodityModel {
 
     private String plate_name;
 
-    private String commodity_name;
+    public String commodity_name;
 
     private String commodity_price;
 
-    private String commodity_img;
+    public String commodity_img;
 
     private String commodity_old_price;
 
-    private String commodity_describe;
+    public String commodity_describe;
 
     private String state;
 

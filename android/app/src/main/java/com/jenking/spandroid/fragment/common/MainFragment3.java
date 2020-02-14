@@ -22,6 +22,7 @@ import com.jenking.spandroid.activity.common.SettingActivity;
 import com.jenking.spandroid.activity.common.UserInfoActivity;
 import com.jenking.spandroid.activity.common.UserInfoAvatarActivity;
 import com.jenking.spandroid.api.BaseAPI;
+import com.jenking.spandroid.intent.IntentManager;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.tools.AccountTool;
 
@@ -82,6 +83,20 @@ public class MainFragment3 extends Fragment {
             startActivity(intent);
         }else{
             Toast.makeText(getContext(), "请登录后重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.balance_bar)
+    void balance_bar(){
+        if (AccountTool.isLogin(this.getContext())){
+            IntentManager.intentToBalance(getContext());
+        }
+    }
+
+    @OnClick(R.id.mine_shipping_address)
+    void mine_shipping_address(){
+        if (AccountTool.isLogin(this.getContext())){
+            IntentManager.intentToMineShippingAddress(getContext());
         }
     }
 

@@ -5,7 +5,7 @@ package com.jenking.spandroid.api;
  */
 
 public class BaseAPI {
-//    public static String base_url = "http://39.108.64.227:7777/";//
-    public static String base_url = "http://zzj.mynatapp.cc/";//
+    public static String base_url = "http://192.168.1.3:8888/";//
+//    public static String base_url = "http://zzj.mynatapp.cc/";//
     public static String base_upload_url = base_url+"upload/uploadFileMobile";//
 }

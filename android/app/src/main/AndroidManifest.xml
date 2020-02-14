@@ -27,7 +27,12 @@
         android:roundIcon="@mipmap/application"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.common.WishlistDetailActivity"></activity>
+        <activity android:name=".activity.common.OrderDetailActivity"></activity>
+        <activity android:name=".activity.common.CommodityPurchaseActivity" />
+        <activity android:name=".activity.common.MineShippingAddressSelectActivity" />
+        <activity android:name=".activity.common.MineShippingAddressEditActivity" />
+        <activity android:name=".activity.common.MineShippingAddressActivity" />
+        <activity android:name=".activity.common.WishlistDetailActivity" />
         <activity android:name=".activity.common.WishlistEditActivity" />
         <activity android:name=".activity.common.WishlistActivity" />
         <activity android:name=".activity.common.SearchCommodityResultActivity" />
@@ -44,49 +49,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.student.MineMatchActivity" />
-        <activity android:name=".activity.student.MineCertActivity" />
-        <activity android:name=".activity.student.MineActivityActivity" />
-        <activity android:name=".activity.student.MineReportActivity" />
-        <activity android:name=".activity.student.MineMoralActivity" />
-        <activity android:name=".activity.student.MineCourseActivity" />
-        <activity
-            android:name=".activity.teacher.TeachScoreOperateActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.manager.ManagerActiActivity" />
-        <activity android:name=".activity.manager.ManagerCertActivity" />
-        <activity android:name=".activity.manager.ManagerCourseActivity" />
-        <activity android:name=".activity.manager.ManagerMatchActivity" />
-        <activity android:name=".activity.manager.ManagerMoralActivity" />
-        <activity android:name=".activity.manager.ManagerReportActivity" />
-        <activity android:name=".activity.manager.ManagerSchoolActivity" />
-        <activity android:name=".activity.manager.ManagerClassActivity" />
-        <activity android:name=".activity.manager.ManagerTeacherActivity" />
-        <activity android:name=".activity.student.MineCourseObligatoryActivity" />
-        <activity android:name=".activity.student.MineCourseElectiveActivity" />
-        <activity android:name=".activity.manager.ManagerCourseSelectedActivity" />
-        <activity android:name=".activity.manager.ManagerScoreActivity" />
         <activity android:name=".activity.common.LoginActivity" />
         <activity android:name=".activity.common.RegisterActivity" />
-        <activity android:name=".activity.manager.ManagerCollegeActivity" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeActivity" />
-        <activity android:name=".activity.teacher.TeacherCourseArrangeActivity" />
         <activity android:name=".activity.common.UserInfoActivity" />
-        <activity android:name=".activity.manager.ManagerSchoolOperateActivity" />
         <activity android:name=".activity.common.SettingActivity" />
         <activity android:name=".activity.common.UserInfoModifyActivity" />
         <activity android:name=".activity.common.UserInfoAvatarActivity" />
-        <activity android:name=".activity.manager.ManagerTermActivity" />
-        <activity android:name=".activity.manager.TermOperateActivity" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypeClass" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypePerson" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypeClassAdd" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonList" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonAdd" />
-        <activity android:name=".activity.student.StudentSelectCourseActivity" />
-        <activity android:name=".activity.manager.ManagerReportListActivity" />
-        <activity android:name=".activity.manager.ManagerScoreListActivity" />
         <activity android:name=".activity.common.TestActivity" />
+        <activity android:name=".activity.common.AccountBalanceActivity" />
+        <activity android:name=".activity.common.AccountPayPwdActivity" />
+        <activity android:name=".activity.common.RechargeActivity" />
+        <activity android:name=".activity.common.BindBankCardActivity" />
+        <activity android:name=".activity.common.RechargeRecordActivity" />
     </application>
 
 </manifest>
